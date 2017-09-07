@@ -12,7 +12,7 @@ import io.github.firemaples.livestreamingpoc.recorder.IApplication;
 
 public class CoreApplication extends Application implements IApplication {
     @Override
-    public Intent getRTMPRecorderIntent(Context context, String roomName) {
-        return YaseaRecorderActivity.getIntent(context, YaseaRecorderActivity.class, roomName);
+    public Intent getRTMPPublisherIntent(Context context, String roomName) {
+        return YaseaPublisherActivity.getIntent(context, YaseaPublisherActivity.class, roomName);
     }
 }

@@ -16,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             int id = v.getId();
-            if (id == R.id.bt_rtmpRecorder) {
-                startActivity(((IApplication) getApplication()).getRTMPRecorderIntent(MainActivity.this, getRoomName()));
+            if (id == R.id.bt_rtmpPublisher) {
+                startActivity(((IApplication) getApplication()).getRTMPPublisherIntent(MainActivity.this, getRoomName()));
             } else if (id == R.id.bt_hlsPlayer) {
                 startActivity(HLSPlayerActivity.getIntent(MainActivity.this, getRoomName()));
             }
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         et_roomName = (EditText) findViewById(R.id.et_roomName);
-        findViewById(R.id.bt_rtmpRecorder).setOnClickListener(onClickListener);
+        findViewById(R.id.bt_rtmpPublisher).setOnClickListener(onClickListener);
         findViewById(R.id.bt_hlsPlayer).setOnClickListener(onClickListener);
     }
 

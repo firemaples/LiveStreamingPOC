@@ -40,7 +40,7 @@ public class HLSPlayerActivity extends Activity {
 
     private static final DefaultBandwidthMeter BANDWIDTH_METER = new DefaultBandwidthMeter();
 
-    private Uri hlsUri;
+    private String hlsUrl;
 
     private DataSource.Factory mediaDataSourceFactory;
     private SimpleExoPlayer player;
@@ -54,7 +54,7 @@ public class HLSPlayerActivity extends Activity {
     private EventLogger eventLogger;
 
     private SimpleExoPlayerView player_hlsPlayer;
-    private TextView tv_debugInfo;
+    private TextView tv_debugInfo, tv_url;
 
     public static Intent getIntent(Context context, String roomName) {
         return new Intent(context, HLSPlayerActivity.class)
@@ -70,7 +70,7 @@ public class HLSPlayerActivity extends Activity {
         if (intent != null) {
             String roomName = intent.getStringExtra(INTENT_ROOM_NAME);
             if (roomName != null) {
-                hlsUri = Uri.parse(String.format(Locale.getDefault(), URI_FORMAT, roomName));
+                hlsUrl = String.format(Locale.getDefault(), URI_FORMAT, roomName);
             } else {
                 Toast.makeText(this, "roomName not found", Toast.LENGTH_SHORT).show();
                 finish();
@@ -83,12 +83,15 @@ public class HLSPlayerActivity extends Activity {
         initViews();
         initTools();
         initPlayer();
-        setupDataSource(hlsUri);
+        setupDataSource(Uri.parse(hlsUrl));
     }
 
     private void initViews() {
         player_hlsPlayer = (SimpleExoPlayerView) findViewById(R.id.player_hlsPlayer);
         tv_debugInfo = (TextView) findViewById(R.id.tv_debugInfo);
+        tv_url = (TextView) findViewById(R.id.tv_url);
+
+        tv_url.setText(hlsUrl);
     }
 
     private void initTools() {

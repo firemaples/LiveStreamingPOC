@@ -8,5 +8,5 @@ import android.content.Intent;
  */
 
 public interface IApplication {
-    Intent getRTMPRecorderIntent(Context context, String roomName);
+    Intent getRTMPPublisherIntent(Context context, String roomName);
 }

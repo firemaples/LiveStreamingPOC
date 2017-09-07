@@ -26,10 +26,10 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/bt_rtmpRecorder"
+        android:id="@+id/bt_rtmpPublisher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RTMP Recorder"/>
+        android:text="RTMP Publisher"/>
 
     <Button
         android:id="@+id/bt_hlsPlayer"
