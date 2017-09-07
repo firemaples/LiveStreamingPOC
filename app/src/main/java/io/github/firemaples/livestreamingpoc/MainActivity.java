@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import io.github.firemaples.livestreamingpoc.player.HLSPlayerActivity;
-import io.github.firemaples.livestreamingpoc.recorder.RTMPRecorderActivity;
+import io.github.firemaples.livestreamingpoc.recorder.IApplication;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,9 +17,9 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             int id = v.getId();
             if (id == R.id.bt_rtmpRecorder) {
-                startActivity(RTMPRecorderActivity.getIntent(MainActivity.this, et_roomName.getText().toString()));
+                startActivity(((IApplication) getApplication()).getRTMPRecorderIntent(MainActivity.this, getRoomName()));
             } else if (id == R.id.bt_hlsPlayer) {
-                startActivity(HLSPlayerActivity.getIntent(MainActivity.this, et_roomName.getText().toString()));
+                startActivity(HLSPlayerActivity.getIntent(MainActivity.this, getRoomName()));
             }
         }
     };
@@ -34,5 +34,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.bt_hlsPlayer).setOnClickListener(onClickListener);
     }
 
-
+    private String getRoomName() {
+        return et_roomName.getText().toString();
+    }
 }

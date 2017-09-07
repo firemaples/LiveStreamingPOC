@@ -11,7 +11,7 @@ import java.util.Locale;
 
 import io.github.firemaples.livestreamingpoc.R;
 
-public class RTMPRecorderActivity extends Activity {
+public abstract class RTMPRecorderActivity extends Activity {
 
     private static final String INTENT_ROOM_NAME = "roomName";
 
@@ -19,8 +19,8 @@ public class RTMPRecorderActivity extends Activity {
 
     private Uri rtmpUri;
 
-    public static Intent getIntent(Context context, String roomName) {
-        return new Intent(context, RTMPRecorderActivity.class)
+    public static Intent getIntent(Context context, Class<?> playerActivityClass, String roomName) {
+        return new Intent(context, playerActivityClass)
                 .putExtra(INTENT_ROOM_NAME, roomName);
     }
 
@@ -44,5 +44,5 @@ public class RTMPRecorderActivity extends Activity {
         }
     }
 
-
+    protected abstract void prepareRecorder(Uri uri);
 }

@@ -19,8 +19,6 @@
         </activity>
         <activity android:name=".player.HLSPlayerActivity">
         </activity>
-        <activity android:name=".recorder.RTMPRecorderActivity">
-        </activity>
     </application>
 
 </manifest>
