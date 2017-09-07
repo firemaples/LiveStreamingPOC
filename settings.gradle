@@ -1,1 +1,1 @@
-include ':app'
+include ':app', ':livepoc_yasea', ':livepoc_none'
