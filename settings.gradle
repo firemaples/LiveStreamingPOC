@@ -1,1 +1,1 @@
-include ':app', ':livepoc_yasea', ':livepoc_none', ':library_yasea'
+include ':app', ':livepoc_yasea', ':livepoc_none', ':library_yasea', ':livepoc_sopcast'
