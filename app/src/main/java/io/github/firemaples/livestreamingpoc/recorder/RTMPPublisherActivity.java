@@ -10,12 +10,11 @@ import android.widget.Toast;
 import java.util.Locale;
 
 import io.github.firemaples.livestreamingpoc.R;
+import io.github.firemaples.livestreamingpoc.SettingUtil;
 
 public abstract class RTMPPublisherActivity extends AppCompatActivity {
 
     private static final String INTENT_ROOM_NAME = "roomName";
-
-    private static final String URI_FORMAT = "rtmp://192.168.1.6/live/%s";
 
     private TextView tv_url;
 
@@ -35,7 +34,7 @@ public abstract class RTMPPublisherActivity extends AppCompatActivity {
         if (intent != null) {
             roomName = intent.getStringExtra(INTENT_ROOM_NAME);
             if (roomName != null) {
-                String rtmpUrl = String.format(Locale.getDefault(), URI_FORMAT, roomName);
+                String rtmpUrl = String.format(Locale.getDefault(), SettingUtil.getRTMPPublishUrl(this), roomName);
                 setViews(rtmpUrl);
                 prepareRecorder(rtmpUrl);
             } else {

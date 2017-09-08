@@ -32,11 +32,10 @@ import com.google.android.exoplayer2.util.Util;
 import java.util.Locale;
 
 import io.github.firemaples.livestreamingpoc.R;
+import io.github.firemaples.livestreamingpoc.SettingUtil;
 
 public class HLSPlayerActivity extends Activity {
     private static final String INTENT_ROOM_NAME = "roomName";
-
-    private static final String URI_FORMAT = "http://192.168.1.6:8080/hls/%s/index.m3u8";
 
     private static final DefaultBandwidthMeter BANDWIDTH_METER = new DefaultBandwidthMeter();
 
@@ -70,7 +69,7 @@ public class HLSPlayerActivity extends Activity {
         if (intent != null) {
             String roomName = intent.getStringExtra(INTENT_ROOM_NAME);
             if (roomName != null) {
-                hlsUrl = String.format(Locale.getDefault(), URI_FORMAT, roomName);
+                hlsUrl = String.format(Locale.getDefault(), SettingUtil.getHLSPlayerUrl(this), roomName);
             } else {
                 Toast.makeText(this, "roomName not found", Toast.LENGTH_SHORT).show();
                 finish();
